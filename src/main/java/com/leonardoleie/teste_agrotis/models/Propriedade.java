@@ -20,7 +20,7 @@ public class Propriedade {
 
     private String nome;
 
-    @OneToMany(mappedBy = "propriedade")
+    @OneToMany(mappedBy = "infosPropriedade")
     private List<Pessoa> pessoas;
 
     public boolean isValid() {

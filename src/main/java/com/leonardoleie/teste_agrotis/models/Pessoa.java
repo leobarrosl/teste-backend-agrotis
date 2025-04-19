@@ -26,7 +26,7 @@ public class Pessoa {
 
     @ManyToOne
     @JoinColumn(name = "propriedade_id")
-    private Propriedade propriedade;
+    private Propriedade infosPropriedade;
 
     @ManyToOne
     @JoinColumn(name = "laboratorio_id")
@@ -35,6 +35,6 @@ public class Pessoa {
     public boolean isValid() {
         return this.nome != null && !this.nome.isBlank()
                 && this.dataInicial != null && this.dataFinal != null
-                && this.propriedade != null && this.laboratorio != null;
+                && this.infosPropriedade != null && this.laboratorio != null;
     }
 }
