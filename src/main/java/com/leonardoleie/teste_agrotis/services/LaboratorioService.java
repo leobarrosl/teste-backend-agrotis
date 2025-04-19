@@ -6,6 +6,7 @@ import com.leonardoleie.teste_agrotis.repositories.LaboratorioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,10 @@ public class LaboratorioService {
 
     public Page<Laboratorio> findAllPageable(Pageable pageable) {
         return laboratorioRepository.findAll(pageable);
+    }
+
+    public List<Laboratorio> findAllWithFilters(Specification<Laboratorio> specification) {
+        return laboratorioRepository.findAll(specification);
     }
 
     public Laboratorio save(Laboratorio laboratorio) {
