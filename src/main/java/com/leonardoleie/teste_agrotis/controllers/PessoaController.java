@@ -3,7 +3,9 @@ package com.leonardoleie.teste_agrotis.controllers;
 import com.leonardoleie.teste_agrotis.dtos.reponses.PessoaResponseDTO;
 import com.leonardoleie.teste_agrotis.models.Pessoa;
 import com.leonardoleie.teste_agrotis.services.PessoaService;
+import com.leonardoleie.teste_agrotis.specifications.PessoaSpecification;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,8 @@ public class PessoaController {
     private final PessoaService pessoaService;
 
     @GetMapping
-    public ResponseEntity<List<PessoaResponseDTO>> getAllPessoas() {
-        return ResponseEntity.ok(pessoaService.findAll().stream().map(PessoaResponseDTO::toDto).toList());
+    public ResponseEntity<List<PessoaResponseDTO>> getAllPessoas(PessoaSpecification pessoaSpecification) {
+        return ResponseEntity.ok(pessoaService.findAll(pessoaSpecification).stream().map(PessoaResponseDTO::toDto).toList());
     }
 
     @GetMapping("pageable")

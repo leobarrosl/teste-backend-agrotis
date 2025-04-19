@@ -1,8 +1,10 @@
 package com.leonardoleie.teste_agrotis.controllers;
 
+import com.leonardoleie.teste_agrotis.dtos.reponses.LaboratorioFormattedResponseDTO;
 import com.leonardoleie.teste_agrotis.dtos.reponses.LaboratorioResponseDTO;
 import com.leonardoleie.teste_agrotis.models.Laboratorio;
 import com.leonardoleie.teste_agrotis.services.LaboratorioService;
+import com.leonardoleie.teste_agrotis.specifications.LaboratorioSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,17 @@ public class LaboratorioController {
     @GetMapping("{id}")
     public ResponseEntity<LaboratorioResponseDTO> getLaboratorioById(@PathVariable Long id) {
         return ResponseEntity.ok(LaboratorioResponseDTO.toDto(laboratorioService.findById(id)));
+    }
+
+    @GetMapping("with-filters")
+    public ResponseEntity<List<LaboratorioFormattedResponseDTO>> getAllLaboratoriosWithFilters(LaboratorioSpecification filters) {
+        return ResponseEntity.ok(
+                laboratorioService.findAllWithFilters(filters)
+                        .stream()
+                        .map(LaboratorioFormattedResponseDTO::toDto)
+                        .sorted((lab1, lab2) -> Integer.compare(lab2.quantidadePessoas(), lab1.quantidadePessoas()))
+                        .toList()
+        );
     }
 
     @PostMapping
