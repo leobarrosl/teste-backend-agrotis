@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,7 +22,7 @@ public class Propriedade {
     private String nome;
 
     @OneToMany(mappedBy = "infosPropriedade")
-    private List<Pessoa> pessoas;
+    private List<Pessoa> pessoas = new ArrayList<>();
 
     public boolean isValid() {
         return this.nome != null && !this.nome.isBlank();

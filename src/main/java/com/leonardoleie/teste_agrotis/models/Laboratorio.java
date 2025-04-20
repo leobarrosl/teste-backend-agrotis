@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,7 +23,7 @@ public class Laboratorio {
     private String nome;
 
     @OneToMany(mappedBy = "laboratorio")
-    private List<Pessoa> pessoas;
+    private List<Pessoa> pessoas = new ArrayList<>();
 
     public boolean isValid() {
         return this.nome != null && !this.nome.isBlank();
