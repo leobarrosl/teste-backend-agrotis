@@ -84,8 +84,6 @@ Para a aplicação dos filtros, foram utilizados query builders a partir das Spe
         "id": 1,
         "nome": "Laboratório Modelo 1"
     }
-}
-  ```
 
 ## Cobertura de Testes
 
