@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -36,14 +37,11 @@ public class LaboratorioController {
     }
 
     @GetMapping("with-filters")
-    public ResponseEntity<List<LaboratorioFormattedResponseDTO>> getAllLaboratoriosWithFilters(LaboratorioSpecification filters) {
-        return ResponseEntity.ok(
-                laboratorioService.findAllWithFilters(filters)
-                        .stream()
-                        .map(LaboratorioFormattedResponseDTO::toDto)
-                        .sorted((lab1, lab2) -> Integer.compare(lab2.quantidadePessoas(), lab1.quantidadePessoas()))
-                        .toList()
-        );
+    public ResponseEntity<List<LaboratorioFormattedResponseDTO>> getAllLaboratoriosWithFilters(LaboratorioSpecification filters, Boolean ordenarPorEntradaMaisAntiga) {
+        return ResponseEntity.ok(laboratorioService.findAllWithFilters(filters, ordenarPorEntradaMaisAntiga)
+                .stream()
+                .map(LaboratorioFormattedResponseDTO::toDto)
+                .toList());
     }
 
     @PostMapping

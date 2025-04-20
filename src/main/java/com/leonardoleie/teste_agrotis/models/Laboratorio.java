@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -25,5 +26,12 @@ public class Laboratorio {
 
     public boolean isValid() {
         return this.nome != null && !this.nome.isBlank();
+    }
+
+    public LocalDateTime getDataMaisAntiga() {
+        return pessoas.stream()
+                .map(Pessoa::getDataInicial)
+                .min(LocalDateTime::compareTo)
+                .orElse(null);
     }
 }
