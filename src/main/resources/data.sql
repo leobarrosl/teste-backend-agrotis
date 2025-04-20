@@ -15,7 +15,7 @@ INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedad
 VALUES (1, 'Carlos Silva', '2024-01-10T08:00:00', '2024-01-20T17:00:00', 'Teste 1', 1, 1);
 
 INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedade_id, laboratorio_id)
-VALUES (2, 'Mariana Souza', '2024-02-01T09:00:00', '2024-02-15T16:30:00', 'Teste 2', 2, 2);
+VALUES (2, 'Mariana Souza', '2025-02-01T09:00:00', '2024-02-15T16:30:00', 'Teste 2', 2, 2);
 
 INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedade_id, laboratorio_id)
 VALUES (3, 'João Mendes', '2024-03-05T07:30:00', '2024-03-20T17:15:00', 'Teste 3', 3, 3);
@@ -42,4 +42,4 @@ INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedad
 VALUES (10, 'Vanessa Rocha', '2024-10-05T09:00:00', '2024-10-15T15:30:00', 'Teste 10', 2, 4);
 
 INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedade_id, laboratorio_id)
-VALUES (11, 'Vanessa Rocha', '2023-10-05T09:00:00', '2023-10-15T15:30:00', 'Teste 10', 2, 2);
+VALUES (11, 'Vanessa Rocha', '2025-10-05T09:00:00', '2023-10-15T15:30:00', 'Teste 10', 2, 2);
