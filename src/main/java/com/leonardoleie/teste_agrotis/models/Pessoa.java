@@ -35,6 +35,7 @@ public class Pessoa {
     public boolean isValid() {
         return this.nome != null && !this.nome.isBlank()
                 && this.dataInicial != null && this.dataFinal != null
-                && this.infosPropriedade != null && this.laboratorio != null;
+                && this.infosPropriedade != null && this.laboratorio != null
+                && this.dataInicial.isBefore(this.dataFinal);
     }
 }
