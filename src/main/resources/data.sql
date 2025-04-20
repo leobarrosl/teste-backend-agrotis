@@ -40,3 +40,6 @@ VALUES (9, 'Roberto Nunes', '2024-09-01T08:00:00', '2024-09-10T16:00:00', 'Teste
 
 INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedade_id, laboratorio_id)
 VALUES (10, 'Vanessa Rocha', '2024-10-05T09:00:00', '2024-10-15T15:30:00', 'Teste 10', 2, 4);
+
+INSERT INTO pessoas (id, nome, data_inicial, data_final, observacoes, propriedade_id, laboratorio_id)
+VALUES (11, 'Vanessa Rocha', '2023-10-05T09:00:00', '2023-10-15T15:30:00', 'Teste 10', 2, 2);
