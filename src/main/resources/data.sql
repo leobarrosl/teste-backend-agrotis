@@ -3,6 +3,7 @@ INSERT INTO laboratorios (nome) VALUES ('Laboratório Modelo 1');
 INSERT INTO laboratorios (nome) VALUES ('Laboratório Modelo 2');
 INSERT INTO laboratorios (nome) VALUES ('Laboratório Modelo 3');
 INSERT INTO laboratorios (nome) VALUES ('Laboratório Modelo 4');
+INSERT INTO laboratorios (nome) VALUES ('Laboratório Modelo 5');
 
 -- PROPRIEDADES
 INSERT INTO propriedades (nome) VALUES ('Fazenda Modelo 1');
