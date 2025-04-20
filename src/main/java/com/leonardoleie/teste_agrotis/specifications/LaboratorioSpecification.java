@@ -1,5 +1,6 @@
 package com.leonardoleie.teste_agrotis.specifications;
 
+import com.leonardoleie.teste_agrotis.exceptions.InvalidFilterException;
 import com.leonardoleie.teste_agrotis.models.Laboratorio;
 import com.leonardoleie.teste_agrotis.models.Pessoa;
 import jakarta.persistence.criteria.*;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class LaboratorioSpecification implements Specification<Laboratorio> {
 
-    private int quantidadeMinima;
+    private Integer quantidadeMinima;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dataInicialMinima;
@@ -35,6 +36,16 @@ public class LaboratorioSpecification implements Specification<Laboratorio> {
 
     @Override
     public Predicate toPredicate(Root<Laboratorio> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+        if (quantidadeMinima == null || quantidadeMinima < 0) {
+            throw new InvalidFilterException("Digite um valor válido para a quantidade mínima.");
+        }
+
+        if (
+                dataInicialMinima != null && dataInicialMaxima != null && dataInicialMinima.isAfter(dataInicialMaxima)
+                || dataFinalMinima != null && dataFinalMaxima != null && dataFinalMinima.isAfter(dataFinalMaxima)) {
+            throw new InvalidFilterException("A data mínima não pode ser maior que a data máxima.");
+        }
+
         query.distinct(true);
 
         if (query.getResultType() == Long.class || query.getResultType() == long.class) {
