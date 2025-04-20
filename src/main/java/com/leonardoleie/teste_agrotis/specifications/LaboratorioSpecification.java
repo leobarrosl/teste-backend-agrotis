@@ -37,18 +37,14 @@ public class LaboratorioSpecification implements Specification<Laboratorio> {
     public Predicate toPredicate(Root<Laboratorio> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         query.distinct(true);
 
-        // Se estiver na cláusula count, não aplica joins ou filtros complexos
         if (query.getResultType() == Long.class || query.getResultType() == long.class) {
             return null;
         }
 
-        // Cria o join com Pessoa
         Join<Laboratorio, Pessoa> pessoaJoin = root.join("pessoas", JoinType.LEFT);
 
-        // Predicate final que vai acumular todas as condições
         Predicate finalPredicate = criteriaBuilder.conjunction();
 
-        // Filtro por quantidade mínima de pessoas
         if (quantidadeMinima > 0) {
             Subquery<Long> subquery = query.subquery(Long.class);
             Root<Pessoa> pessoaRoot = subquery.from(Pessoa.class);
@@ -61,7 +57,6 @@ public class LaboratorioSpecification implements Specification<Laboratorio> {
             finalPredicate = criteriaBuilder.and(finalPredicate, quantidadeMinimaPredicate);
         }
 
-        // Filtros de data inicial e final
         if (dataInicialMinima != null) {
             finalPredicate = criteriaBuilder.and(finalPredicate,
                     criteriaBuilder.greaterThanOrEqualTo(pessoaJoin.get("dataInicial"), dataInicialMinima));
@@ -82,7 +77,6 @@ public class LaboratorioSpecification implements Specification<Laboratorio> {
                     criteriaBuilder.lessThanOrEqualTo(pessoaJoin.get("dataFinal"), dataFinalMaxima));
         }
 
-        // Filtro por observações
         if (observacoes != null && !observacoes.isEmpty()) {
             finalPredicate = criteriaBuilder.and(finalPredicate,
                     criteriaBuilder.like(criteriaBuilder.lower(pessoaJoin.get("observacoes")),
