@@ -1,5 +1,6 @@
 package com.leonardoleie.teste_agrotis.specifications;
 
+import com.leonardoleie.teste_agrotis.exceptions.InvalidFilterException;
 import com.leonardoleie.teste_agrotis.models.Pessoa;
 import jakarta.persistence.criteria.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +37,12 @@ public class PessoaSpecification implements Specification<Pessoa> {
 
     @Override
     public Predicate toPredicate(Root<Pessoa> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+        if (
+                dataInicialMinima != null && dataInicialMaxima != null && dataInicialMinima.isAfter(dataInicialMaxima)
+                        || dataFinalMinima != null && dataFinalMaxima != null && dataFinalMinima.isAfter(dataFinalMaxima)) {
+            throw new InvalidFilterException("A data mínima não pode ser maior que a data máxima.");
+        }
+
         query.distinct(true);
 
         // Aplicar ordenação se especificada

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,7 +14,7 @@ import java.util.List;
 @Table(name = "laboratorios")
 @NoArgsConstructor
 @AllArgsConstructor
-public class    Laboratorio {
+public class Laboratorio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +23,16 @@ public class    Laboratorio {
     private String nome;
 
     @OneToMany(mappedBy = "laboratorio")
-    private List<Pessoa> pessoas;
+    private List<Pessoa> pessoas = new ArrayList<>();
 
     public boolean isValid() {
         return this.nome != null && !this.nome.isBlank();
+    }
+
+    public LocalDateTime getDataMaisAntiga() {
+        return pessoas.stream()
+                .map(Pessoa::getDataInicial)
+                .min(LocalDateTime::compareTo)
+                .orElse(null);
     }
 }
