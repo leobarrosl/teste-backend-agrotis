@@ -6,6 +6,7 @@
 - Para executar os testes de dentro do próprio projeto, basta rodar o mvn:test.
 - Para executar os testes do postman, é recomendado rodar o projeto do zero e executar a run do postman logo em seguida, antes de alterar algo.
 - Para facilitar a execução em qualquer máquina, optei pelo banco de dados H2.
+- Foi criada uma branch com a utilização do Swagger para facilitar a visão dos endpoints da API, para acessá-la, basta acessar http://localhost:8080/swagger-ui/index.html#/ com o projeto rodando.
 
 Link para a collection do postman: https://drive.google.com/drive/folders/1AbQdDAMrq78yOoyilg3ofD3SDs0US38U?usp=sharing
 
