@@ -13,11 +13,11 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API de Gerenciamento")
+                        .title("API - Agrotis")
                         .version("1.0")
-                        .description("API para gerenciamento de pessoas, propriedades e laboratórios")
+                        .description("API de resolução do teste da empresa Agrotis")
                         .contact(new Contact()
                                 .name("Leonardo Leite")
-                                .email("seu.email@exemplo.com")));
+                                .email("leonardoleite99@gmail.com")));
     }
 }
