@@ -31,8 +31,6 @@ public class LaboratorioSpecification implements Specification<Laboratorio> {
     private LocalDateTime dataFinalMaxima;
 
     private String observacoes;
-    private String orderBy;
-    private String direction;
 
     @Override
     public Predicate toPredicate(Root<Laboratorio> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
