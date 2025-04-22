@@ -36,6 +36,6 @@ public class Pessoa {
         return this.nome != null && !this.nome.isBlank()
                 && this.dataInicial != null && this.dataFinal != null
                 && this.infosPropriedade != null && this.laboratorio != null
-                && this.dataInicial.isBefore(this.dataFinal);
+                && (this.dataInicial.isEqual(this.dataFinal) || this.dataInicial.isBefore(this.dataFinal));
     }
 }
