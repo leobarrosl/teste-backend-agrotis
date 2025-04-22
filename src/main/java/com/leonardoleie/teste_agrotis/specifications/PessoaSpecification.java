@@ -45,7 +45,6 @@ public class PessoaSpecification implements Specification<Pessoa> {
 
         query.distinct(true);
 
-        // Aplicar ordenação se especificada
         if (orderBy != null && !orderBy.isEmpty()) {
             if ("DESC".equalsIgnoreCase(direction)) {
                 query.orderBy(criteriaBuilder.desc(root.get(orderBy)));

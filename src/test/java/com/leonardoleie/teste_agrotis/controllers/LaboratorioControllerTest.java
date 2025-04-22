@@ -127,8 +127,6 @@ class LaboratorioControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    // Testes para os filtros
-
     @Test
     void shouldFilterLaboratoriosByQuantidadeMinima() throws Exception {
         Pessoa pessoa = new Pessoa();
